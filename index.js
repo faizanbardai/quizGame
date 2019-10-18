@@ -6,8 +6,7 @@
 // 3.   Finish with alert
 
 var score = 0;
-var difficulty;
-var questionType;
+var difficulty = "easy";
 var totalQuestion = 10;
 var currentQuestion;
 
@@ -16,6 +15,7 @@ window.onload = function () {
 };
 
 function startQuiz(num) {
+    document.querySelector("#nextQuestionButton").style.display="none";
     currentQuestion = num;
     document.querySelector("#question").innerText = quiz.results[currentQuestion].question;
     document.querySelector("#answersArea").innerHTML = "";
@@ -49,12 +49,34 @@ function randomizeQuizAnswers(a, b) {
     return b;
 };
 
-function checkAnswer(userAnswer, questionNo) {
-    //This function will receive the user answer and the question number
+function checkAnswer() {
     //It will check if the answer is correct >>update score
     //Toggle nextQuestionButton to display: block
     //checkButton to display: none
+    
+    if (document.querySelector('input[name="answer"]:checked')==null) {
+        alert("Please select an answer and then press Check.");
+    } else {
+        var userAnswer = document.querySelector('input[name="answer"]:checked').value;
+        if (userAnswer == quiz.results[currentQuestion].correct_answer) {
+            correctAns();
+        } else incorrectAns();
+    };
+};
 
+function correctAns() {
+    increaseScore();
+};
+
+function increaseScore(){
+    score++;
+    document.querySelector("#currentScore").innerText = score;
+    document.querySelector("#checkButton").style.display="none";
+    document.querySelector("#nextQuestionButton").style.display="inline-block";
+};
+
+function incorrectAns() {
+    console.log("incorrect");
 };
 
 function nextQuestion() {
@@ -63,6 +85,8 @@ function nextQuestion() {
     //If no question are left, alert the user: Quiz over. Your final score: [score].
     //Toggle checkButton to display: block
     //Toggle nextQuestionButton to display: none
+
+    
 };
 
 var quiz = {
