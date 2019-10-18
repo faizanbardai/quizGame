@@ -7,19 +7,46 @@
 
 var score = 0;
 var difficulty;
+var questionType;
 var totalQuestion = 10;
 var currentQuestion;
 
 window.onload = function () {
-    console.log("Hi!");
-    document.querySelector("#question").innerText = quiz.results[1].question;
+    startQuiz(0);
+};
 
+function startQuiz(num) {
+    currentQuestion = num;
+    document.querySelector("#question").innerText = quiz.results[currentQuestion].question;
+    document.querySelector("#answersArea").innerHTML = "";
+    var correctAnswer = quiz.results[currentQuestion].correct_answer;
+    console.log("The correct answer is " + correctAnswer);
+    var incorrectAnswers = quiz.results[currentQuestion].incorrect_answers;
+    console.log("The incorrect answers are " + incorrectAnswers);
+    var options = randomizeQuizAnswers(correctAnswer, incorrectAnswers);
+    console.log("I'm here");
+    for (i = 0; i < options.length; i++) {
+        var newOption = document.createElement("input");
+        newOption.type = "radio";
+        newOption.name = "answer";
+        newOption.id = "answer" + i;
+        newOption.value = options[i];
+        var newLabel = document.createElement("label");
+        newLabel.innerText = options[i];
+        newLabel.htmlFor = "answer" + i;
+        var breakLine = document.createElement("br");
+        document.querySelector("#answersArea").appendChild(newOption);
+        document.querySelector("#answersArea").appendChild(newLabel);
+        document.querySelector("#answersArea").appendChild(breakLine);
+    };
 };
 
 function randomizeQuizAnswers(a, b) {
     //This function will receive correct and incorrect answers.
     //It will then randomize the answers and return.
-    return answers;
+    b.push(a);
+    console.log("All the options are " + b);
+    return b;
 };
 
 function checkAnswer(userAnswer, questionNo) {
