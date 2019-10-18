@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>FayJu Tutor</h1>
+        <p>Welcome to the Quiz</p>
+    </header>
+    <hr>
+    <section id="exam">
+        <div id="questionArea">
+            <p id="question">Question will go here!</p>
+        </div>
+        <hr>
+        <div id="answersArea">
+            <p id="answers">Answers will go here!</p>
+        </div>
+        <hr>
+        <div>
+            <button id="checkButton" onclick="checkAnswer()">Check</button>
+            <p>Score: </p><p id="currentScore">0</p>
+            <button id="nextQuestionButton" onclick="nextQuestion()">Next Question</button>
+        </div>
+    </section>
+
+</body>
+
+</html>
