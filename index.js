@@ -7,17 +7,19 @@
 
 var score = 0;
 var difficulty = "easy";
-var totalQuestion = 10;
-var currentQuestion;
+var totalQuestion = 4;
+var currentQuestion = 0;
 
 window.onload = function () {
-    startQuiz(0);
+    startQuiz(currentQuestion);
 };
 
 function startQuiz(num) {
-    document.querySelector("#nextQuestionButton").style.display="none";
+    document.querySelector("#nextQuestionButton").style.display = "none";
     currentQuestion = num;
     document.querySelector("#question").innerText = quiz.results[currentQuestion].question;
+    var a = currentQuestion + 1;
+    document.querySelector("#questionNumber").innerText = "Question " + a + " of " + totalQuestion;
     document.querySelector("#answersArea").innerHTML = "";
     var correctAnswer = quiz.results[currentQuestion].correct_answer;
     console.log("The correct answer is " + correctAnswer);
@@ -53,8 +55,8 @@ function checkAnswer() {
     //It will check if the answer is correct >>update score
     //Toggle nextQuestionButton to display: block
     //checkButton to display: none
-    
-    if (document.querySelector('input[name="answer"]:checked')==null) {
+
+    if (document.querySelector('input[name="answer"]:checked') == null) {
         alert("Please select an answer and then press Check.");
     } else {
         var userAnswer = document.querySelector('input[name="answer"]:checked').value;
@@ -66,17 +68,18 @@ function checkAnswer() {
 
 function correctAns() {
     increaseScore();
+    document.querySelector("#checkButton").style.display = "none";
+    document.querySelector("#nextQuestionButton").style.display = "inline-block";
 };
 
-function increaseScore(){
+function increaseScore() {
     score++;
     document.querySelector("#currentScore").innerText = score;
-    document.querySelector("#checkButton").style.display="none";
-    document.querySelector("#nextQuestionButton").style.display="inline-block";
 };
 
 function incorrectAns() {
-    console.log("incorrect");
+    document.querySelector("#checkButton").style.display = "none";
+    document.querySelector("#nextQuestionButton").style.display = "inline-block";
 };
 
 function nextQuestion() {
@@ -85,8 +88,15 @@ function nextQuestion() {
     //If no question are left, alert the user: Quiz over. Your final score: [score].
     //Toggle checkButton to display: block
     //Toggle nextQuestionButton to display: none
+    currentQuestion++;
+    if (currentQuestion == totalQuestion) {
+        alert("Test is over. Your score is: " + score);
+        return
+    } else {
+        startQuiz(currentQuestion);
+        document.querySelector("#checkButton").style.display = "inline-block";
+    };
 
-    
 };
 
 var quiz = {
