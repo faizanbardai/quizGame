@@ -9,58 +9,75 @@
     <link rel="stylesheet" href="index.css">
     <script src="index.js"></script>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
     <header>
-        <h1>FayJu Tutor</h1>
-        <p>Welcome to the Quiz</p>
+        <div class="card">
+            <div class="card-body">
+                <h1>FayJu Tutor</h1>
+                <p>Welcome to the Quiz</p>
+            </div>
+        </div>
     </header>
-    <hr>
     <section id="examOptions">
-        <p>Select</p>
-        <span>Number of Question: </span>
-        <span>
-            <input type="number" id="totalQuestions" value=10>
-        </span>
-        <br>
-        <span>Difficulty Level</span>
-        <span>
-            <input type="radio" name="difficultyLevel" id="difficultyLevel" value="easy" checked>
-            <label for="difficultyLevel">Easy</label>
-            <input type="radio" name="difficultyLevel" id="difficultyLevel" value="medium">
-            <label for="difficultyLevel">Medium</label>
-            <input type="radio" name="difficultyLevel" id="difficultyLevel" value="hard">
-            <label for="difficultyLevel">Hard</label>
-        </span>
-        <br>
-        <button id="startQuizButton" onclick="startQuiz()">Start Quiz</button>
+        <div class="card">
+            <div class="card-body">
+                <p>Select</p>
+                <span>Number of Question: </span>
+                <span>
+                    <input type="number" id="totalQuestions" value=10>
+                </span>
+                <span>Difficulty Level</span>
+                <span>
+                    <input type="radio" name="difficultyLevel" id="difficultyLevel" value="easy" checked>
+                    <label for="difficultyLevel">Easy</label>
+                    <input type="radio" name="difficultyLevel" id="difficultyLevel" value="medium">
+                    <label for="difficultyLevel">Medium</label>
+                    <input type="radio" name="difficultyLevel" id="difficultyLevel" value="hard">
+                    <label for="difficultyLevel">Hard</label>
+                </span>
+                <button id="startQuizButton" class="btn btn-primary btn-block" onclick="startQuiz()">Start Quiz</button>
+            </div>
+        </div>
     </section>
     <section id="exam">
-        <div id="questionArea">
-            <p id="questionNumber">Question 1 of 5</p>
-            <p id="question">Question will go here!</p>
-        </div>
-        <hr>
-        <div id="answersArea">
-            <p id="answers">Answers will go here!</p>
+        <div class="card text-center">
+            <div class="card-body">
+                <div id="questionArea">
+                    <p id="questionNumber">Question 1 of 5</p>
+                    <p id="question">Question will go here!</p>
+                </div>
+                <hr>
+                <div id="answersArea">
+                    <p id="answers">Answers will go here!</p>
 
-        </div>
-        <hr>
-        <div>
-            <button id="checkButton" onclick="checkAnswer()">Check</button>
-            <button id="nextQuestionButton" onclick="nextQuestion()">Next Question</button>
-            <span>Score: </span>
-            <span id="currentScore">0</span>
-            <p id="answerStatus">Answer is correct.</p>
+                </div>
+                <hr>
+                <div>
+                    <button id="checkButton" class="btn btn-secondary" onclick="checkAnswer()">Check</button>
+                    <button id="nextQuestionButton" class="btn btn-success" onclick="nextQuestion()">Next
+                        Question</button>
+                    <span>Score: </span>
+                    <span id="currentScore">0</span>
+                    <p id="answerStatus">Answer is correct.</p>
+                </div>
+            </div>
         </div>
     </section>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
