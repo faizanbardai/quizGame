@@ -54,10 +54,12 @@ function startQuiz() {
                 newOption.type = "radio";
                 newOption.name = "answer";
                 newOption.id = "answer" + i;
+                newOption.className = "form-check-input";
                 newOption.value = options[i];
                 var newLabel = document.createElement("label");
                 newLabel.innerText = options[i];
                 newLabel.htmlFor = "answer" + i;
+                newLabel.className = "form-check-label";
                 var breakLine = document.createElement("br");
                 document.querySelector("#answersArea").appendChild(newOption);
                 document.querySelector("#answersArea").appendChild(newLabel);
@@ -103,6 +105,7 @@ function checkAnswer() {
     if (document.querySelector('input[name="answer"]:checked') == null) {
         alert("Please select an answer and then press Check.");
     } else {
+        document.querySelector("#answerStatus").style.display = "block";
         var userAnswer = document.querySelector('input[name="answer"]:checked').value;
         quizArray.push({
             question: question,
