@@ -7,48 +7,59 @@
 
 var score = 0;
 var difficulty = "easy";
-var totalQuestion = 4;
+var totalQuestion = 1;
 var currentQuestion = 0;
+var correctAnswer;
+var incorrectAnswers;
+
 
 window.onload = function () {
     startQuiz(currentQuestion);
 };
 
-function startQuiz(num) {
+function startQuiz(currentQuestion) {
     document.querySelector("#nextQuestionButton").style.display = "none";
     document.querySelector("#answersArea").innerHTML = "";
     document.querySelector("#answerStatus").innerText = "";
-    currentQuestion = num;
-    document.querySelector("#question").innerText = quiz.results[currentQuestion].question;
-    var a = currentQuestion + 1;
-    document.querySelector("#questionNumber").innerText = "Question " + a + " of " + totalQuestion;    
-    var correctAnswer = quiz.results[currentQuestion].correct_answer;
-    console.log("The correct answer is " + correctAnswer);
-    var incorrectAnswers = quiz.results[currentQuestion].incorrect_answers;
-    console.log("The incorrect answers are " + incorrectAnswers);
-    var options = randomizeQuizAnswers(correctAnswer, incorrectAnswers);
-    console.log("I'm here");
-    for (i = 0; i < options.length; i++) {
-        var newOption = document.createElement("input");
-        newOption.type = "radio";
-        newOption.name = "answer";
-        newOption.id = "answer" + i;
-        newOption.value = options[i];
-        var newLabel = document.createElement("label");
-        newLabel.innerText = options[i];
-        newLabel.htmlFor = "answer" + i;
-        var breakLine = document.createElement("br");
-        document.querySelector("#answersArea").appendChild(newOption);
-        document.querySelector("#answersArea").appendChild(newLabel);
-        document.querySelector("#answersArea").appendChild(breakLine);
-    };
+    quizURL = prepareQuizURL(totalQuestion,difficulty);
+    
+    fetch(quizURL)
+    .then((data) => data.json())
+    .then(function (data) {
+        document.querySelector("#question").innerText = data.results[0].question;
+        correctAnswer = data.results[0].correct_answer;
+        incorrectAnswers = data.results[0].incorrect_answers;
+
+        var a = currentQuestion + 1;
+        document.querySelector("#questionNumber").innerText = "Question " + a + " of " + totalQuestion; 
+
+        var options = randomizeQuizAnswers(correctAnswer, incorrectAnswers);
+
+        for (i = 0; i < options.length; i++) {
+            var newOption = document.createElement("input");
+            newOption.type = "radio";
+            newOption.name = "answer";
+            newOption.id = "answer" + i;
+            newOption.value = options[i];
+            var newLabel = document.createElement("label");
+            newLabel.innerText = options[i];
+            newLabel.htmlFor = "answer" + i;
+            var breakLine = document.createElement("br");
+            document.querySelector("#answersArea").appendChild(newOption);
+            document.querySelector("#answersArea").appendChild(newLabel);
+            document.querySelector("#answersArea").appendChild(breakLine);
+        };
+    });    
+};
+
+function prepareQuizURL(a,b) {
+    return "https://opentdb.com/api.php?amount="+a+"&category=18&difficulty="+b;
 };
 
 function randomizeQuizAnswers(a, b) {
     //This function will receive correct and incorrect answers.
     //It will then randomize the answers and return.
     b.push(a);
-    console.log("All the options are " + b);
     return b;
 };
 
