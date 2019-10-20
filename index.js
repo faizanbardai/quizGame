@@ -29,7 +29,8 @@ function startQuiz() {
     document.querySelector("#nextQuestionButton").style.display = "none";
     document.querySelector("#answersArea").innerHTML = "";
     document.querySelector("#answerStatus").innerText = "";
-    quizURL = prepareQuizURL(totalQuestion, difficulty);
+    quizURL = prepareQuizURL(1, difficulty);
+    //Bug: Question can repeat as the server may send same question twice.
 
     fetch(quizURL)
         .then((data) => data.json())
@@ -78,21 +79,21 @@ function randomizeQuizAnswers(a, b) {
 
 function shuffle(array) {
     var m = array.length, t, i;
-  
+
     // While there remain elements to shuffle…
     while (m) {
-  
-      // Pick a remaining element…
-      i = Math.floor(Math.random() * m--);
-  
-      // And swap it with the current element.
-      t = array[m];
-      array[m] = array[i];
-      array[i] = t;
+
+        // Pick a remaining element…
+        i = Math.floor(Math.random() * m--);
+
+        // And swap it with the current element.
+        t = array[m];
+        array[m] = array[i];
+        array[i] = t;
     }
-  
+
     return array;
-  }
+};
 
 function checkAnswer() {
     //It will check if the answer is correct >>update score
