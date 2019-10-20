@@ -6,8 +6,8 @@
 // 3.   Finish with alert
 
 var score = 0;
-var difficulty = "easy";
-var totalQuestion = 2;
+var difficulty;
+var totalQuestion;
 var currentQuestion = 0;
 var question;
 var correctAnswer;
@@ -17,10 +17,15 @@ var quizArray = new Array();
 
 
 window.onload = function () {
-    startQuiz(currentQuestion);
 };
 
-function startQuiz(currentQuestion) {
+function startQuiz() {
+    difficulty = document.querySelector("input[name=difficultyLevel]:checked").value;
+    totalQuestion = document.querySelector("#totalQuestions").value;
+
+    document.querySelector("#examOptions").style.display = "none";
+    document.querySelector("#exam").style.display = "block";
+
     document.querySelector("#nextQuestionButton").style.display = "none";
     document.querySelector("#answersArea").innerHTML = "";
     document.querySelector("#answerStatus").innerText = "";
@@ -86,11 +91,6 @@ function checkAnswer() {
             userAnswer: userAnswer
         });
         console.log(quizArray);
-        // quiz.question = question;
-        // quiz.correctAnswer = correctAnswer;
-        // quiz.options = incorrectAnswers;
-        // quiz.userAnswer = userAnswer;
-        // quizArray.push(quiz);        
         if (userAnswer == correctAnswer) {
             correctAns();
         } else incorrectAns();
@@ -128,8 +128,6 @@ function nextQuestion() {
     } else {
         startQuiz(currentQuestion);
         document.querySelector("#checkButton").style.display = "inline-block";
-
     };
-
 };
 
