@@ -120,6 +120,7 @@ function checkAnswer() {
 function correctAns() {
     increaseScore();
     document.querySelector("#answerStatus").innerText = "Answer is correct!";
+    document.querySelector("#answerStatus").className = "alert alert-success";
     document.querySelector("#checkButton").style.display = "none";
     document.querySelector("#nextQuestionButton").style.display = "inline-block";
 };
@@ -131,6 +132,7 @@ function increaseScore() {
 
 function incorrectAns() {
     document.querySelector("#answerStatus").innerText = "Answer is incorrect!";
+    document.querySelector("#answerStatus").className = "alert alert-danger";
     document.querySelector("#checkButton").style.display = "none";
     document.querySelector("#nextQuestionButton").style.display = "inline-block";
 };
@@ -148,6 +150,7 @@ function nextQuestion() {
     } else {
         startQuiz(currentQuestion);
         document.querySelector("#checkButton").style.display = "inline-block";
+        document.querySelector("#answerStatus").style.display = "none";
     };
 };
 
