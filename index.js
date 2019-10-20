@@ -38,6 +38,7 @@ function startQuiz() {
 
             document.querySelector("#question").innerText = question;
             correctAnswer = data.results[0].correct_answer;
+            console.log(correctAnswer);
 
             incorrectAnswers = data.results[0].incorrect_answers;
 
@@ -72,8 +73,26 @@ function randomizeQuizAnswers(a, b) {
     //This function will receive correct and incorrect answers.
     //It will then randomize the answers and return.
     b.push(a);
-    return b;
+    return shuffle(b);
 };
+
+function shuffle(array) {
+    var m = array.length, t, i;
+  
+    // While there remain elements to shuffle…
+    while (m) {
+  
+      // Pick a remaining element…
+      i = Math.floor(Math.random() * m--);
+  
+      // And swap it with the current element.
+      t = array[m];
+      array[m] = array[i];
+      array[i] = t;
+    }
+  
+    return array;
+  }
 
 function checkAnswer() {
     //It will check if the answer is correct >>update score
