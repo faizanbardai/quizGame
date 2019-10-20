@@ -76,7 +76,7 @@ function randomizeQuizAnswers(a, b) {
     b.push(a);
     return shuffle(b);
 };
-
+//https://bost.ocks.org/mike/shuffle/
 function shuffle(array) {
     var m = array.length, t, i;
 
