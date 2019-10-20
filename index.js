@@ -16,11 +16,12 @@ window.onload = function () {
 
 function startQuiz(num) {
     document.querySelector("#nextQuestionButton").style.display = "none";
+    document.querySelector("#answersArea").innerHTML = "";
+    document.querySelector("#answerStatus").innerText = "";
     currentQuestion = num;
     document.querySelector("#question").innerText = quiz.results[currentQuestion].question;
     var a = currentQuestion + 1;
-    document.querySelector("#questionNumber").innerText = "Question " + a + " of " + totalQuestion;
-    document.querySelector("#answersArea").innerHTML = "";
+    document.querySelector("#questionNumber").innerText = "Question " + a + " of " + totalQuestion;    
     var correctAnswer = quiz.results[currentQuestion].correct_answer;
     console.log("The correct answer is " + correctAnswer);
     var incorrectAnswers = quiz.results[currentQuestion].incorrect_answers;
@@ -68,6 +69,7 @@ function checkAnswer() {
 
 function correctAns() {
     increaseScore();
+    document.querySelector("#answerStatus").innerText = "Answer is correct!";
     document.querySelector("#checkButton").style.display = "none";
     document.querySelector("#nextQuestionButton").style.display = "inline-block";
 };
@@ -78,6 +80,7 @@ function increaseScore() {
 };
 
 function incorrectAns() {
+    document.querySelector("#answerStatus").innerText = "Answer is incorrect!";
     document.querySelector("#checkButton").style.display = "none";
     document.querySelector("#nextQuestionButton").style.display = "inline-block";
 };
