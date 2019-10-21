@@ -103,7 +103,10 @@ function checkAnswer() {
     //checkButton to display: none
 
     if (document.querySelector('input[name="answer"]:checked') == null) {
-        alert("Please select an answer and then press Check.");
+        document.querySelector("#answerStatus").style.display = "block";
+        document.querySelector("#answerStatus").innerText = "Please select an answer and then press Check.";
+        document.querySelector("#answerStatus").className = "alert alert-dark";
+
     } else {
         document.querySelector("#answerStatus").style.display = "block";
         var userAnswer = document.querySelector('input[name="answer"]:checked').value;
