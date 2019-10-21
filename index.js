@@ -37,12 +37,11 @@ function displayQuiz() {
     document.querySelector("#progress").style.display = "block";
     document.querySelector("#nextQuestionButton").style.display = "none";
     document.querySelector("#answersArea").innerHTML = "";
-    question = quizAPIData[currentQuestion].question;
+    question = decodeURIComponent(quizAPIData[currentQuestion].question);
     document.querySelector("#question").innerText = question;
     correctAnswer = quizAPIData[currentQuestion].correct_answer;
     console.log("correct: " + correctAnswer);
     incorrectAnswers = quizAPIData[currentQuestion].incorrect_answers;
-    console.log("incorrect: " + incorrectAnswers);
     var a = currentQuestion + 1;
     document.querySelector("#questionNumber").innerText = "Question " + a + " of " + totalQuestion;
     var options = randomizeQuizAnswers(correctAnswer, incorrectAnswers);
@@ -54,7 +53,7 @@ function displayQuiz() {
         newOption.className = "form-check-input";
         newOption.value = options[i];
         var newLabel = document.createElement("label");
-        newLabel.innerText = options[i];
+        newLabel.innerText = decodeURIComponent(options[i]);
         newLabel.htmlFor = "answer" + i;
         newLabel.className = "form-check-label";
         var breakLine = document.createElement("br");
@@ -68,7 +67,7 @@ function displayQuiz() {
 };
 
 function prepareQuizURL(a, b) {
-    return "https://opentdb.com/api.php?amount=" + a + "&category=18&difficulty=" + b;
+    return "https://opentdb.com/api.php?amount=" + a + "&category=18&difficulty=" + b +"&encode=url3986";
 };
 
 function randomizeQuizAnswers(a, b) {
