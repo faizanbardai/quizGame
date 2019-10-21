@@ -25,21 +25,16 @@
     <section id="examOptions" class="container-fluid">
         <div class="card">
             <div class="card-body">
-                <p>Select</p>
-                <span>Number of Question: </span>
-                <span>
-                    <input type="number" id="totalQuestions" value=10>
-                </span>
+                <legend for="totalQuestions">Number of Question:</legend>
+                <input type="number" id="totalQuestions" value=10>
                 <br>
-                <span>Difficulty Level</span>
-                <span>
-                    <input type="radio" name="difficultyLevel" id="difficultyLevel" value="easy" checked>
-                    <label for="difficultyLevel">Easy</label>
-                    <input type="radio" name="difficultyLevel" id="difficultyLevel" value="medium">
-                    <label for="difficultyLevel">Medium</label>
-                    <input type="radio" name="difficultyLevel" id="difficultyLevel" value="hard">
-                    <label for="difficultyLevel">Hard</label>
-                </span>
+                Difficulty Level
+                <input type="radio" name="difficultyLevel" id="difficultyLevel" value="easy" checked>
+                <label for="difficultyLevel">Easy</label>
+                <input type="radio" name="difficultyLevel" id="difficultyLevel" value="medium">
+                <label for="difficultyLevel">Medium</label>
+                <input type="radio" name="difficultyLevel" id="difficultyLevel" value="hard">
+                <label for="difficultyLevel">Hard</label>
                 <button id="startQuizButton" class="btn btn-primary btn-block" onclick="startQuiz()">Start Quiz</button>
             </div>
         </div>
