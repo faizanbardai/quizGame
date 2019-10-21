@@ -151,12 +151,16 @@ function nextQuestion() {
     //Toggle nextQuestionButton to display: none
     currentQuestion++;
     if (currentQuestion == totalQuestion) {
-        alert("Test is over. Your score is: " + score);
+        document.querySelector(".progress-bar").style.width = ((parseInt(currentQuestion)) / parseInt(totalQuestion)) * 100 + "%";
+        document.querySelector(".progress-bar").innerText = currentQuestion;
+        alert("Test is over. Your score is: " + score);        
         return
     } else {
         startQuiz(currentQuestion);
         document.querySelector("#checkButton").style.display = "inline-block";
         document.querySelector("#answerStatus").style.display = "none";
+        document.querySelector(".progress-bar").style.width = ((parseInt(currentQuestion)) / parseInt(totalQuestion)) * 100 + "%";
+        document.querySelector(".progress-bar").innerText = currentQuestion;
     };
 };
 
