@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <header>
+    <header class="container-fluid">
         <div class="card">
             <div class="card-body">
                 <h1>FayJu Tutor</h1>
@@ -22,7 +22,7 @@
             </div>
         </div>
     </header>
-    <section id="examOptions">
+    <section id="examOptions" class="container-fluid">
         <div class="card">
             <div class="card-body">
                 <p>Select</p>
@@ -30,6 +30,7 @@
                 <span>
                     <input type="number" id="totalQuestions" value=10>
                 </span>
+                <br>
                 <span>Difficulty Level</span>
                 <span>
                     <input type="radio" name="difficultyLevel" id="difficultyLevel" value="easy" checked>
@@ -43,11 +44,11 @@
             </div>
         </div>
     </section>
-    <section id="exam">
-        <div class="card text-center">
+    <section id="exam" class="container-fluid">
+        <div class="card">
             <div class="card-body">
                 <div id="questionArea">
-                    <p id="questionNumber">Question 1 of 5</p>
+                    <div class="card-header"id="questionNumber">Question 1 of 5</div>
                     <p id="question">Question will go here!</p>
                 </div>
                 <hr>
@@ -57,8 +58,8 @@
                 </div>
                 <hr>
                 <div>
-                    <button id="checkButton" class="btn btn-secondary" onclick="checkAnswer()">Check</button>
-                    <button id="nextQuestionButton" class="btn btn-success" onclick="nextQuestion()">Next
+                    <button id="checkButton" class="btn btn-secondary btn-sm" onclick="checkAnswer()">Check</button>
+                    <button id="nextQuestionButton" class="btn btn-success btn-sm" onclick="nextQuestion()">Next
                         Question</button>
                     <span>Score: </span>
                     <span id="currentScore">0</span>
