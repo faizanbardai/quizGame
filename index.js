@@ -25,10 +25,9 @@ function startQuiz() {
 
     document.querySelector("#examOptions").style.display = "none";
     document.querySelector("#exam").style.display = "block";
-
+    document.querySelector("#progress").style.display = "block";
     document.querySelector("#nextQuestionButton").style.display = "none";
     document.querySelector("#answersArea").innerHTML = "";
-    document.querySelector("#answerStatus").innerText = "";
     quizURL = prepareQuizURL(1, difficulty);
     //Bug: Question can repeat as the server may send same question twice.
 
@@ -66,6 +65,8 @@ function startQuiz() {
                 document.querySelector("#answersArea").appendChild(breakLine);
             };
         });
+        document.querySelector("#answerStatus").innerText = "Please select an answer and then press Check.";
+        document.querySelector("#answerStatus").className = "row alert alert-dark";
         document.querySelector(".progress-bar").style.width = ((parseInt(currentQuestion)+1) / parseInt(totalQuestion)) * 100 + "%";
 };
 
@@ -104,12 +105,10 @@ function checkAnswer() {
     //checkButton to display: none
 
     if (document.querySelector('input[name="answer"]:checked') == null) {
-        document.querySelector("#answerStatus").style.display = "block";
         document.querySelector("#answerStatus").innerText = "Please select an answer and then press Check.";
-        document.querySelector("#answerStatus").className = "alert alert-dark";
+        document.querySelector("#answerStatus").className = "row alert alert-dark";
 
     } else {
-        document.querySelector("#answerStatus").style.display = "block";
         var userAnswer = document.querySelector('input[name="answer"]:checked').value;
         quizArray.push({
             question: question,
@@ -127,7 +126,7 @@ function checkAnswer() {
 function correctAns() {
     increaseScore();
     document.querySelector("#answerStatus").innerText = "Answer is correct!";
-    document.querySelector("#answerStatus").className = "alert alert-success";
+    document.querySelector("#answerStatus").className = "row alert alert-success";
     document.querySelector("#checkButton").style.display = "none";
     document.querySelector("#nextQuestionButton").style.display = "inline-block";
 };
@@ -139,7 +138,7 @@ function increaseScore() {
 
 function incorrectAns() {
     document.querySelector("#answerStatus").innerText = "Answer is incorrect!";
-    document.querySelector("#answerStatus").className = "alert alert-danger";
+    document.querySelector("#answerStatus").className = "row alert alert-danger";
     document.querySelector("#checkButton").style.display = "none";
     document.querySelector("#nextQuestionButton").style.display = "inline-block";
 };
@@ -153,12 +152,13 @@ function nextQuestion() {
     currentQuestion++;
     if (currentQuestion == totalQuestion) {
         document.querySelector(".progress-bar").style.width = ((parseInt(currentQuestion)+1) / parseInt(totalQuestion)) * 100 + "%";
-        alert("Test is over. Your score is: " + score);      
+        document.querySelector("#answerStatus").innerText = "Test is over. Your score is: " + score;
+        document.querySelector("#answerStatus").className = "row alert alert-success";
+        document.querySelector("#exam").innerHTML="";
         return
     } else {
         startQuiz(currentQuestion);
         document.querySelector("#checkButton").style.display = "inline-block";
-        document.querySelector("#answerStatus").style.display = "none";
         document.querySelector(".progress-bar").style.width = ((parseInt(currentQuestion)+1) / parseInt(totalQuestion)) * 100 + "%";
     };
 };
