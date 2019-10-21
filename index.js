@@ -65,9 +65,9 @@ function startQuiz() {
                 document.querySelector("#answersArea").appendChild(breakLine);
             };
         });
-        document.querySelector("#answerStatus").innerText = "Please select an answer and then press Check.";
-        document.querySelector("#answerStatus").className = "row alert alert-dark";
-        document.querySelector(".progress-bar").style.width = ((parseInt(currentQuestion)+1) / parseInt(totalQuestion)) * 100 + "%";
+    document.querySelector("#answerStatus").innerText = "Please select an answer and then press Check.";
+    document.querySelector("#answerStatus").className = "row alert alert-dark";
+    document.querySelector(".progress-bar").style.width = ((parseInt(currentQuestion) + 1) / parseInt(totalQuestion)) * 100 + "%";
 };
 
 function prepareQuizURL(a, b) {
@@ -151,15 +151,15 @@ function nextQuestion() {
     //Toggle nextQuestionButton to display: none
     currentQuestion++;
     if (currentQuestion == totalQuestion) {
-        document.querySelector(".progress-bar").style.width = ((parseInt(currentQuestion)+1) / parseInt(totalQuestion)) * 100 + "%";
+        document.querySelector(".progress-bar").style.width = ((parseInt(currentQuestion) + 1) / parseInt(totalQuestion)) * 100 + "%";
         document.querySelector("#answerStatus").innerText = "Test is over. Your score is: " + score;
         document.querySelector("#answerStatus").className = "row alert alert-success";
-        document.querySelector("#exam").innerHTML="";
+        document.querySelector("#exam").innerHTML = "";
         return
     } else {
         startQuiz(currentQuestion);
         document.querySelector("#checkButton").style.display = "inline-block";
-        document.querySelector(".progress-bar").style.width = ((parseInt(currentQuestion)+1) / parseInt(totalQuestion)) * 100 + "%";
+        document.querySelector(".progress-bar").style.width = ((parseInt(currentQuestion) + 1) / parseInt(totalQuestion)) * 100 + "%";
     };
 };
 
