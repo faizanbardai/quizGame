@@ -59,7 +59,7 @@ function displayQuiz() {
         document.querySelector("#answersArea").appendChild(breakLine);
     };
     document.querySelector("#answerStatus").innerText = "Please select an answer and then press Check.";
-    document.querySelector("#answerStatus").className = "row alert alert-dark";
+    document.querySelector("#answerStatus").className="text-center alert alert-primary";
     document.querySelector(".progress-bar").style.width = ((parseInt(currentQuestion) + 1) / parseInt(totalQuestion)) * 100 + "%";
 };
 
@@ -99,7 +99,7 @@ function checkAnswer() {
 
     if (document.querySelector('input[name="answer"]:checked') == null) {
         document.querySelector("#answerStatus").innerText = "Please select an answer and then press Check.";
-        document.querySelector("#answerStatus").className = "row alert alert-dark";
+        document.querySelector("#answerStatus").className="text-center alert alert-warning";
 
     } else {
         var userAnswer = document.querySelector('input[name="answer"]:checked').value;
@@ -119,7 +119,7 @@ function checkAnswer() {
 function correctAns() {
     increaseScore();
     document.querySelector("#answerStatus").innerText = "Answer is correct!";
-    document.querySelector("#answerStatus").className = "row alert alert-success";
+    document.querySelector("#answerStatus").className="text-center alert alert-success";
     document.querySelector("#checkButton").style.display = "none";
     document.querySelector("#nextQuestionButton").style.display = "inline-block";
 };
@@ -131,7 +131,7 @@ function increaseScore() {
 
 function incorrectAns() {
     document.querySelector("#answerStatus").innerText = "Answer is incorrect!";
-    document.querySelector("#answerStatus").className = "row alert alert-danger";
+    document.querySelector("#answerStatus").className="text-center alert alert-danger";
     document.querySelector("#checkButton").style.display = "none";
     document.querySelector("#nextQuestionButton").style.display = "inline-block";
 };
@@ -146,7 +146,7 @@ function nextQuestion() {
     if (currentQuestion == totalQuestion) {
         document.querySelector(".progress-bar").style.width = ((parseInt(currentQuestion) + 1) / parseInt(totalQuestion)) * 100 + "%";
         document.querySelector("#answerStatus").innerText = "Test is over. Your score is: " + score;
-        document.querySelector("#answerStatus").className = "row alert alert-success";
+        document.querySelector("#answerStatus").className="text-center alert alert-success";
         document.querySelector("#exam").innerHTML = "";
         return
     } else {
