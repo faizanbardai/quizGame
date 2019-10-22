@@ -63,8 +63,8 @@ function displayQuiz() {
     document.querySelector(".progress-bar").style.width = ((parseInt(currentQuestion) + 1) / parseInt(totalQuestion)) * 100 + "%";
 };
 
-function prepareQuizURL(a, b) {
-    return "https://opentdb.com/api.php?amount=" + a + "&category=18&difficulty=" + b +"&encode=url3986";
+function prepareQuizURL(totalQuestion, difficulty) {
+    return "https://opentdb.com/api.php?amount=" + totalQuestion + "&category=18&difficulty=" + difficulty +"&encode=url3986";
 };
 
 function randomizeQuizAnswers(a, b) {
