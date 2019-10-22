@@ -67,10 +67,10 @@ function prepareQuizURL(totalQuestion, difficulty) {
     return "https://opentdb.com/api.php?amount=" + totalQuestion + "&category=18&difficulty=" + difficulty +"&encode=url3986";
 };
 
-function randomizeQuizAnswers(a, b) {
+function randomizeQuizAnswers(correctAnswer, incorrectAnswers) {
     //This function will receive correct and incorrect answers.
     //It will then randomize the answers and return.
-    b.push(a);
+    incorrectAnswers.push(correctAnswer);
     return shuffle(b);
 };
 //https://bost.ocks.org/mike/shuffle/
