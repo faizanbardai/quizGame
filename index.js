@@ -71,7 +71,7 @@ function randomizeQuizAnswers(correctAnswer, incorrectAnswers) {
     //This function will receive correct and incorrect answers.
     //It will then randomize the answers and return.
     incorrectAnswers.push(correctAnswer);
-    return shuffle(b);
+    return shuffle(incorrectAnswers);
 };
 //https://bost.ocks.org/mike/shuffle/
 function shuffle(array) {
