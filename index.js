@@ -16,9 +16,6 @@ var quiz = new Object();
 var quizArray = new Array();
 var quizAPIData;
 
-window.onload = function () {
-};
-
 function startQuiz() {
     difficulty = document.querySelector("input[name=difficultyLevel]:checked").value;
     totalQuestion = document.querySelector("#totalQuestions").value;
