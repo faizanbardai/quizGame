@@ -1,3 +1,12 @@
-#exam, #progress {
+/* https://colorhunt.co/palette/17117 */
+
+.bg-color,
+.font-color {
+    background-color: #08d9d6;
+    color: #252a34;
+}
+
+#exam,
+#progress {
     display: none;
 }
