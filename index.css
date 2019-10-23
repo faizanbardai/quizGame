@@ -6,6 +6,10 @@
     color: #252a34;
 }
 
+.myName {
+    font-family: 'Homemade Apple', cursive;
+}
+
 #exam,
 #progress {
     display: none;
