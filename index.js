@@ -16,18 +16,15 @@ var quiz = new Object();
 var quizArray = new Array();
 var quizAPIData;
 
-function startQuiz() {
+ const startQuiz = async () => {
     difficulty = document.querySelector("input[name=difficultyLevel]:checked").value;
     totalQuestion = document.querySelector("#totalQuestions").value;
     quizURL = prepareQuizURL(totalQuestion, difficulty);
-    fetch(quizURL)
-        .then((data) => data.json())
-        .then(function (data) {
-            quizAPIData = data.results;
-            displayQuiz();
-        });
-};
-
+    data = await fetch(quizURL);
+    data = await data.json();    
+    quizAPIData = data.results;
+    displayQuiz();
+    };
 function displayQuiz() {
     document.querySelector("#examOptions").style.display = "none";
     document.querySelector("#exam").style.display = "block";
